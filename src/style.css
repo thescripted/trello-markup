@@ -21,6 +21,11 @@ code {
   font-size: 14px;
 }
 
+.f16 {
+  font-size: 16px;
+}
+
+
 /* App.css */
 .App {
   text-align: left;
@@ -83,6 +88,7 @@ code {
   min-height: 20px;
   padding: 10px 8px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .header-list-name {
@@ -100,6 +106,7 @@ code {
   overflow: hidden;
   overflow-wrap: break-word;
   resize: none;
+  white-space: normal;
 }
 
 
@@ -116,5 +123,37 @@ code {
 
 .card-title {
   padding: 6px 8px 2px;
+}
+
+/* CardList.js */
+.add-another-card {
+  width: 100%;
+  min-height: 38px;
+}
+
+.card-composer {
+  display: block;
+  text-decoration: none;
+  text-align: left;
+  margin: 2px 8px 8px;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.card-composer:visited{
+}
+
+
+.card-composer:hover{
+  background-color: rgba(9,30,66,0.08);
+  color: #172b4d;
+}
+
+
+.icon-add::before{
+  content: "\002B"
+}
+
+.add-another-card-text{
 }
 
