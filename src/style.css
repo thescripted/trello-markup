@@ -24,11 +24,10 @@ button {
   color: #fff;
   background-color: hsla(0,0%,100%,0.3);
   border: none;
-  padding: 0;
   cursor: pointer;
   font-weight: 700;
   margin: 0 4px 0 0;
-  padding: 4px;
+  padding: 4px 10px;
 }
 
 
@@ -42,6 +41,10 @@ button {
 
 .f16 {
   font-size: 16px;
+}
+
+.f18 {
+  font-size: 18px;
 }
 
 .f20 {
@@ -198,6 +201,10 @@ button {
   box-sizing: border-box;
 }
 
+.list-wrapper:first-child {
+  margin: 0 4px 0 8px;
+}
+
 .card-list {
   max-height: 100%;
   background-color: #ebecf0;
@@ -275,6 +282,42 @@ button {
   height: 650px;
   flex-direction: column;
 }
+
+.cardlist-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 4px 4px 8px;
+}
+
+.menu-left-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: 32px;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-weight: 700;
+  white-space: nowrap;
+  border-radius: 3px;
+  margin: 0 4px 0 0;
+  padding: 0 8px;
+}
+
+.title-container:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.menu-right-header {
+  justify-content: flex-end;
+}
+
 .list-container {
   white-space: nowrap;
   overflow-x: auto;
