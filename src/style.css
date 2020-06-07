@@ -25,6 +25,36 @@ code {
   font-size: 16px;
 }
 
+/* Webkit-Scrollbar */
+.list-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.list-scroll::-webkit-scrollbar-thumb {
+  background: rgba(9, 30, 66, 0.25);
+  border-radius: 10px;
+}
+
+.list-scroll::-webkit-scrollbar-track{
+  background: rgba(9, 30, 66, 0.08);
+  border-radius: 10px;
+}
+
+.main-container-scroll::-webkit-scrollbar{
+  width: 12px;
+  height: 12px;
+}
+
+.main-container-scroll::-webkit-scrollbar-thumb {
+  background: rgba(9, 30, 66, 0.25);
+  border-radius: 10px;
+}
+
+.main-container-scroll::-webkit-scrollbar-track {
+  background: rgba(9, 30, 66, 0.08);
+  border-radius: 10px;
+}
 
 /* App.css */
 .App {
@@ -67,21 +97,43 @@ code {
 }
 
 /* Card.js */ 
+
+.card-component {
+  width: 256px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 auto 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+}
+
+.card-component:hover{
+  background-color: rgba(9,30,66,0.04);
+}
+
+.card-title {
+  padding: 6px 8px 2px;
+}
+
+/* CardList.js */
 .list-wrapper {
   width: 272px;
   height: 100%;
   margin: 0 4px;
   display: inline-block;
   vertical-align: top;
+  box-sizing: border-box;
 }
 
 .card-list {
+  max-height: 100%;
   background-color: #ebecf0;
   display: flex;
   border-radius: 3px;
   flex-direction: column;
   align-items: center;
-
 }
 
 .header-list {
@@ -110,22 +162,10 @@ code {
 }
 
 
-.card-component {
-  width: 256px;
-  height: 32px;
-  overflow: hidden;
-  border-radius: 3px;
-  cursor: pointer;
-  margin: 0 auto 8px;
-  background-color: #fff;
-  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+.list-card {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-
-.card-title {
-  padding: 6px 8px 2px;
-}
-
-/* CardList.js */
 .add-another-card {
   width: 100%;
   min-height: 38px;
@@ -156,4 +196,18 @@ code {
 
 .add-another-card-text{
 }
+
+/* CardListContainer.js */
+.cardlist-canvas {
+  display: flex;
+  height: 650px;
+  flex-direction: column;
+}
+.list-container {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 10px 0;
+}
+
 

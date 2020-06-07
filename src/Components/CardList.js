@@ -10,11 +10,29 @@ const CardList = () => {
             To-Do
           </textarea>
         </div>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <div className="list-card list-scroll">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
         <div className="add-another-card">
           <a href="/" className="card-composer">
             <span className="icon-add"></span>
