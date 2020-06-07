@@ -13,7 +13,7 @@ const Header = () => {
         <button className="header-add-button">Add</button>
         <button className="header-info-button">Info</button>
         <div className="header-user-initial-field">
-          <span style={{height: "32px", width: "32px", lineHeight: "32px", fontSize: "16px"}}>BK</span>
+          <span style={{height: "32px", width: "32px", lineHeight: "32px", fontSize: "14px"}}>BK</span>
         </div>
       </div>
     </div>
