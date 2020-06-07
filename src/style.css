@@ -1,4 +1,8 @@
 /* index.css */ 
+#root {
+  background-color: rgb(0, 121, 191);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -13,6 +17,21 @@ code {
     monospace;
 }
 
+button {
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: 3px;
+  color: #fff;
+  background-color: hsla(0,0%,100%,0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 0 4px 0 0;
+  padding: 4px;
+}
+
+
 .lh20 {
   line-height: 20px;
 }
@@ -23,6 +42,10 @@ code {
 
 .f16 {
   font-size: 16px;
+}
+
+.f20 {
+  font-size: 20px;
 }
 
 /* Webkit-Scrollbar */
@@ -47,7 +70,7 @@ code {
 }
 
 .main-container-scroll::-webkit-scrollbar-thumb {
-  background: rgba(9, 30, 66, 0.25);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
 
@@ -94,6 +117,54 @@ code {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Header.js */
+.header-container {
+  height: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background: rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 4px;
+  justify-content: space-between;
+}
+
+.left-header-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header-search-field {
+  background: hsla(0, 0%, 100%, 0.3);
+  color: #fff;
+  border-radius: 3px;
+  padding: 4px;
+  font-weight: 500;
+}
+
+.header-main-logo {
+  position: absolute;
+  left: 50%;
+  text-decoration: none;
+  color: #ddd;
+}
+
+.right-header-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-user-initial-field {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: #ddd;
+  text-align: center;
+  font-weight: 700;
+
 }
 
 /* Card.js */ 
@@ -178,6 +249,7 @@ code {
   margin: 2px 8px 8px;
   padding: 4px 8px;
   border-radius: 3px;
+  color: #5e6c84;
 }
 
 .card-composer:visited{
