@@ -20,6 +20,12 @@ const CardListContainer = () => {
         <CardList />
         <CardList />
         <CardList />
+        <div className="list-wrapper add-another-list">
+          <a href="/" className="list-composer">
+            <span className="icon-add"></span>
+            <span className="add-another-list-text">Add another list</span>
+          </a>
+        </div>
       </div>
     </div>
   );

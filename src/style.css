@@ -201,6 +201,7 @@ button {
   box-sizing: border-box;
 }
 
+
 .list-wrapper:first-child {
   margin: 0 4px 0 8px;
 }
@@ -248,6 +249,7 @@ button {
   width: 100%;
   min-height: 38px;
 }
+
 
 .card-composer {
   display: block;
@@ -325,4 +327,23 @@ button {
   margin: 10px 0;
 }
 
+.add-another-list {
+  display: inline-block;
+  width: 272px;
+  height: 38px;
+}
 
+.list-composer {
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 6px 10px;
+  margin: 2px 8px 8px;
+  display: block;
+  text-align: left;
+  color: #fff;
+  background-color: hsla(0,0%,100%,0.3);
+}
+
+.list-composer:hover {
+  background-color: rgba(9, 30, 66, 0.25);
+}
