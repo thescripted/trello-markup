@@ -51,6 +51,10 @@ button {
   font-size: 20px;
 }
 
+.hide {
+  display: none;
+}
+
 /* Webkit-Scrollbar */
 .list-scroll::-webkit-scrollbar {
   width: 8px;
@@ -70,6 +74,7 @@ button {
 .main-container-scroll::-webkit-scrollbar{
   width: 12px;
   height: 12px;
+  margin: 10px 0 0 0;
 }
 
 .main-container-scroll::-webkit-scrollbar-thumb {
@@ -318,6 +323,7 @@ button {
 }
 
 .list-container {
+  height: 100%;
   white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
@@ -366,6 +372,10 @@ button {
   width: 100%;
   box-sizing: border-box;
 
+}
+
+.card-list-textarea:focus {
+  outline: 0;
 }
 
 .card-list-control {

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Card = () => {
+const Card = ({ text }) => {
   return (
     <div className="card-component f14 lh20">
       <div className="card-title">
-        Hello, World!
+        {text}
       </div>
     </div>
   );
