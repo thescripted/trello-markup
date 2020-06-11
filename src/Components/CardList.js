@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from "./Card";
+import { AddCard } from './AddCard';
 
 const CardList = () => {
   return (
@@ -20,25 +21,8 @@ const CardList = () => {
           <Card />
           <Card />
           <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
         </div>
-        <div className="add-another-card">
-          <a href="/" className="card-composer">
-            <span className="icon-add"></span>
-            <span className="add-another-card-text">Add another card</span>
-          </a>
-        </div>
+        <AddCard />
       </div>
     </div>
   );
