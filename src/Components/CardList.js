@@ -3,28 +3,6 @@ import Card from "./Card";
 import { AddCard } from './AddCard';
 
 const cardInformation = [
-  {
-    text: "Here is some text"
-  },
-  {
-    text: "Here is some more text"
-  },
-  {
-    text: "Here is some text lexx"
-  },
-  {
-    text: "Here is some text soemthing"
-  },
-  {
-    text: "Here is some text something else"
-  },
-  {
-    text: "Here is some text new thing"
-  },
-  {
-    text: "Here is some text ladidah"
-  },
-
 ]
 
 const CardList = () => {
@@ -51,7 +29,12 @@ const CardList = () => {
       generateNewCard()
       setMessage("");
     }
-    handleHiding()
+    if (e.keyCode !== 13) {
+      handleHiding()
+    } else {
+      setMessage("")
+      textFocus.current.focus()
+    }
     return;
   }
 
@@ -62,7 +45,14 @@ const CardList = () => {
 
   const handleTitle = (e) => {
     if (e.keyCode === 13) {
-      console.log(document.getElementsByClassName("header-list-name"))
+      document.activeElement.blur() // Removes focus from title
+    }
+  }
+
+  const handleContent = (e) => {
+    if (e.keyCode === 13) {
+      document.activeElement.blur();
+      handleMessageSubmitter(e);
     }
   }
 
@@ -78,7 +68,6 @@ const CardList = () => {
           {cardInformation.map(cardInfo => {
             return <Card text={cardInfo.text} />;
           })}
-          <AddCard handleHiding={handleHiding} toggleHide={toggleHide} />
           <div className={toggleHide ? "hide" : "cc-input-container"}>
             <div className="card-list-input">
               <textarea ref={textFocus}
@@ -86,15 +75,17 @@ const CardList = () => {
                 dir="auto"
                 value={message}
                 onChange={e => handleMessageUpdater(e)}
+                onKeyDown={handleContent}
                 placeholder="Enter a title for this card…"></textarea>
             </div>
             <div className="card-list-control">
-              <input className="primary" type="submit" value="Add Card" onClick={e => handleMessageSubmitter(e)} />
+              <input autoFocus className="primary" type="submit" value="Add Card" onClick={e => handleMessageSubmitter(e)} />
               { /* eslint-disable-next-line */}
               <a className="icon-close" href="#" onClick={handleHiding} />
             </div>
           </div>
         </div>
+        <AddCard handleHiding={handleHiding} toggleHide={toggleHide} />
       </div>
     </div >
   );

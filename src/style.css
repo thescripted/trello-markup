@@ -178,7 +178,7 @@ button {
 /* Card.js */ 
 
 .card-component {
-  width: 256px;
+  width: 100%;
   height: 32px;
   overflow: hidden;
   border-radius: 3px;
@@ -204,6 +204,7 @@ button {
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 
@@ -247,6 +248,7 @@ button {
 
 
 .list-card {
+  width: 256px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -277,10 +279,12 @@ button {
   content: "\002B"
 }
 
-.add-another-card-text{
-}
-
 /* CardListContainer.js */
+.cardlist-creation-container {
+  width: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+}
 .cardlist-canvas {
   display: flex;
   height: 650px;

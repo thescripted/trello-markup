@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import CardList from './CardList';
+import AddList from './AddList';
 
 const CardListContainer = () => {
+  const [hideListCreator, setHideListCreator] = useState(true);
+  const textFocus = useRef(null)
+
+  const handleListHiding = () => {
+    setHideListCreator(!hideListCreator);
+  }
+
   return (
     <div className="cardlist-canvas">
       <div className="cardlist-header">
@@ -17,15 +25,22 @@ const CardListContainer = () => {
         <CardList />
         <CardList />
         <CardList />
-        <CardList />
-        <CardList />
-        <CardList />
-        <div className="list-wrapper add-another-list">
-          <a href="/" className="list-composer">
-            <span className="icon-add"></span>
-            <span className="add-another-list-text">Add another list</span>
-          </a>
+        <AddList handleListHiding={handleListHiding} toggleListHide={hideListCreator} />
+        <div className={hideListCreator ? "hide" : "list-wrapper"}>
+          <div className="card-list">
+            <div className="cardlist-creation-container cc-input-container">
+              <div className="cardlist-creation-text">
+                <textarea ref={textFocus} className="cardlist-creation-textarea card-list-textarea" placeholder="Enter list title..."></textarea>
+              </div>
+              <div className="cardlist-creation-controls card-list-control">
+                <input className="primary" type="submit" value="Add List" />
+                { /* eslint-disable-next-line */}
+                <a className="icon-close" href="#" onClick={handleListHiding} />
+              </div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   );
