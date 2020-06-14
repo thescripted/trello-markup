@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react';
 import CardList from './CardList';
 import AddList from './AddList';
 
-const TEST_LIST = [];
-
 const CardListContainer = ({ Database }) => {
   const [hideListCreator, setHideListCreator] = useState(true);
   const [listMessage, setListMessage] = useState("");
@@ -18,7 +16,7 @@ const CardListContainer = ({ Database }) => {
   }
 
   const handleListSubmitter = e => { // Generates a List Object to render onto the canvas
-    TEST_LIST.push(listMessage);
+    Database.push({ title: listMessage, content: [] });
     setListMessage("");
     handleListHiding();
   }
@@ -36,7 +34,7 @@ const CardListContainer = ({ Database }) => {
       </div>
       <div className="list-container main-container-scroll">
         {Database.map(cardData => (
-          <CardList cardData={cardData} />
+          <CardList key={cardData.title} cardData={cardData} /> // TODO: Update Key with unique #
         ))}
         {hideListCreator ? (<AddList handleListHiding={handleListHiding} toggleListHide={hideListCreator} />) :
           (
@@ -47,7 +45,7 @@ const CardListContainer = ({ Database }) => {
                     <textarea
                       ref={textFocus}
                       className="cardlist-creation-textarea card-list-textarea"
-                      onClick={e => handleListUpdater(e)}
+                      onChange={e => handleListUpdater(e)}
                       placeholder="Enter list title..."></textarea>
                   </div>
                   <div className="cardlist-creation-controls card-list-control">

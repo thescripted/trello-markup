@@ -5,7 +5,7 @@ const AddList = ({ handleListHiding, toggleListHide }) => {
         <div className={toggleListHide ? "list-wrapper add-another-list" : "hide"}>
             <div className="list-composer" role="button" onClick={handleListHiding}>
                 <span className="icon-add"></span>
-                <span className="add-another-list-text">Add another list</span>
+                <span className="add-another-list-text">Add a list</span>
             </div>
         </div>
     )

@@ -36,8 +36,7 @@ const CardList = ({ cardData }) => {
   }
 
   const generateNewCard = () => { // add a new card in-memory to the cardData array
-    cardData.push({ text: message })
-    console.log(cardData)
+    cardData.content.push(message)
   }
 
   const handleTitle = (e) => {
@@ -57,14 +56,16 @@ const CardList = ({ cardData }) => {
     <div className="list-wrapper">
       <div className="card-list">
         <div className="header-list">
-          <textarea className="header-list-name f16" rows="1" spellCheck="false" onKeyDown={handleTitle}>
-            To-Do
-          </textarea>
+          <textarea defaultValue={cardData.title}
+            className="header-list-name f16"
+            rows="1"
+            spellCheck="false"
+            onKeyDown={handleTitle} />
         </div>
         <div className="list-card list-scroll">
-          {cardData.map(cardInfo => {
-            return <Card text={cardInfo.text} />;
-          })}
+          {cardData.content.map(cardText => (
+            <Card key={cardText} text={cardText} /> //TODO: Generate Unique Key
+          ))}
           <div className={toggleHide ? "hide" : "cc-input-container"}>
             <div className="card-list-input">
               <textarea ref={textFocus}
