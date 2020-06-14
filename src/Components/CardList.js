@@ -2,10 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Card from "./Card";
 import { AddCard } from './AddCard';
 
-const cardInformation = [
-]
-
-const CardList = () => {
+const CardList = ({ cardData }) => {
   const [toggleHide, setToggleHide] = useState(true);
   const [message, setMessage] = useState("");
   const textFocus = useRef(null)
@@ -38,9 +35,9 @@ const CardList = () => {
     return;
   }
 
-  const generateNewCard = () => { // add a new card in-memory to the cardInformation array
-    cardInformation.push({ text: message })
-    console.log(cardInformation)
+  const generateNewCard = () => { // add a new card in-memory to the cardData array
+    cardData.push({ text: message })
+    console.log(cardData)
   }
 
   const handleTitle = (e) => {
@@ -60,12 +57,12 @@ const CardList = () => {
     <div className="list-wrapper">
       <div className="card-list">
         <div className="header-list">
-          <textarea className="header-list-name f16" spellCheck="false" onKeyDown={handleTitle}>
+          <textarea className="header-list-name f16" rows="1" spellCheck="false" onKeyDown={handleTitle}>
             To-Do
           </textarea>
         </div>
         <div className="list-card list-scroll">
-          {cardInformation.map(cardInfo => {
+          {cardData.map(cardInfo => {
             return <Card text={cardInfo.text} />;
           })}
           <div className={toggleHide ? "hide" : "cc-input-container"}>
