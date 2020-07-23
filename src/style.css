@@ -1,19 +1,20 @@
-/* index.css */ 
+/* index.css */
 #root {
   background-color: rgb(0, 121, 191);
 }
 
-body, textarea {
+body,
+textarea {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -22,14 +23,13 @@ button {
   min-width: 32px;
   border-radius: 3px;
   color: #fff;
-  background-color: hsla(0,0%,100%,0.3);
+  background-color: hsla(0, 0%, 100%, 0.3);
   border: none;
   cursor: pointer;
   font-weight: 700;
   margin: 0 4px 0 0;
   padding: 4px 10px;
 }
-
 
 .lh20 {
   line-height: 20px;
@@ -66,12 +66,12 @@ button {
   border-radius: 10px;
 }
 
-.list-scroll::-webkit-scrollbar-track{
+.list-scroll::-webkit-scrollbar-track {
   background: rgba(9, 30, 66, 0.08);
   border-radius: 10px;
 }
 
-.main-container-scroll::-webkit-scrollbar{
+.main-container-scroll::-webkit-scrollbar {
   width: 12px;
   height: 12px;
   margin: 10px 0 0 0;
@@ -172,10 +172,9 @@ button {
   background-color: #ddd;
   text-align: center;
   font-weight: 700;
-
 }
 
-/* Card.js */ 
+/* Card.js */
 
 .card-component {
   width: 100%;
@@ -189,8 +188,8 @@ button {
   white-space: normal;
 }
 
-.card-component:hover{
-  background-color: rgba(9,30,66,0.04);
+.card-component:hover {
+  background-color: rgba(9, 30, 66, 0.04);
 }
 
 .card-title {
@@ -205,9 +204,7 @@ button {
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
-  cursor: pointer;
 }
-
 
 .list-wrapper:first-child {
   margin: 0 4px 0 8px;
@@ -223,10 +220,21 @@ button {
 }
 
 .header-list {
+  display: flex;
   min-height: 40px;
   padding: 10px 8px;
   width: 100%;
   box-sizing: border-box;
+}
+
+.cancel-button {
+  min-width: 16px;
+  min-height: 16px;
+  color: black;
+  padding: 0 4px;
+  margin: 0 0 0 4px;
+  background: transparent;
+  border: none;
 }
 
 .header-list-name {
@@ -244,13 +252,11 @@ button {
   resize: none;
 }
 
-
 .list-card {
   width: 256px;
   overflow-x: hidden;
   overflow-y: auto;
 }
-
 
 .card-composer {
   cursor: pointer;
@@ -263,18 +269,16 @@ button {
   color: #5e6c84;
 }
 
-.card-composer:visited{
+.card-composer:visited {
 }
 
-
-.card-composer:hover{
-  background-color: rgba(9,30,66,0.08);
+.card-composer:hover {
+  background-color: rgba(9, 30, 66, 0.08);
   color: #172b4d;
 }
 
-
-.icon-add::before{
-  content: "\002B"
+.icon-add::before {
+  content: "\002B";
 }
 
 /* CardListContainer.js */
@@ -346,7 +350,7 @@ button {
   display: block;
   text-align: left;
   color: #fff;
-  background-color: hsla(0,0%,100%,0.3);
+  background-color: hsla(0, 0%, 100%, 0.3);
 }
 
 .list-composer:hover {
@@ -373,7 +377,6 @@ button {
   box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
   width: 100%;
   box-sizing: border-box;
-
 }
 
 .card-list-textarea:focus {
