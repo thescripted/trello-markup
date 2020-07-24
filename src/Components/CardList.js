@@ -1,9 +1,20 @@
 import React, { useState, useRef, useEffect } from "react"
 import Card from "./Card"
 import { AddCard } from "./AddCard"
+import { useMutation } from "urql"
 
-const CardList = ({ title, id, cardData, deleteListByID }) => {
+const ADD_CARD_TO_LIST = `
+mutation($list_id: Int!, $content: String!) {
+  addCardToList(list_id: $list_id,  content: $content) {
+    content
+    card_id
+  }
+}`
+
+const CardList = ({ title, id, cardData, deleteListByID, updateListByID }) => {
+  const [createCardResults, createCard] = useMutation(ADD_CARD_TO_LIST)
   const [toggleHide, setToggleHide] = useState(true)
+  const [titleMessage, setTitleMessage] = useState(title)
   const [message, setMessage] = useState("")
   const textFocus = useRef(null)
 
@@ -24,7 +35,14 @@ const CardList = ({ title, id, cardData, deleteListByID }) => {
   const handleMessageSubmitter = e => {
     // triggers a new generated card and clears message/hiding
     if (message.trim() !== "") {
-      generateNewCard()
+      createCard({
+        list_id: parseInt(id),
+        content: message
+      }).then(result => {
+        if (result.error) {
+          console.log(result.error)
+        } else console.log(result)
+      })
       setMessage("")
     }
     if (e.keyCode !== 13) {
@@ -36,14 +54,10 @@ const CardList = ({ title, id, cardData, deleteListByID }) => {
     return
   }
 
-  const generateNewCard = () => {
-    // add a new card in-memory to the cardData array
-    cardData.content.push(message)
-  }
-
   const handleTitle = e => {
     if (e.keyCode === 13) {
       document.activeElement.blur() // Removes focus from title
+      updateListByID(id, titleMessage) // TODO: Update List beyond just "pressing enter"
     }
   }
 
@@ -59,10 +73,11 @@ const CardList = ({ title, id, cardData, deleteListByID }) => {
       <div className='card-list'>
         <div className='header-list'>
           <textarea
-            defaultValue={title}
             className='header-list-name f16'
             rows='1'
             spellCheck='false'
+            value={titleMessage}
+            onChange={e => setTitleMessage(e.target.value)}
             onKeyDown={handleTitle}
           />
           <button className='cancel-button' onClick={() => deleteListByID(id)}>
