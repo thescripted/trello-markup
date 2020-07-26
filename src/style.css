@@ -250,6 +250,15 @@ button {
   color: #172b4d;
   white-space: normal;
   resize: none;
+  transition: 0.1s;
+}
+
+.header-list-name:focus {
+  background: #fff;
+  border: none;
+  outline: none;
+  box-shadow: inset 0 0 0 2px #0079bf;
+  /* outline-color: rgb(23, 43, 77); */
 }
 
 .list-card {

@@ -18,18 +18,15 @@ const CardList = ({ title, id, cardData, deleteListByID, updateListByID }) => {
   const [message, setMessage] = useState("")
   const textFocus = useRef(null)
 
-  const handleHiding = () => {
-    setToggleHide(!toggleHide)
-  }
-
   useEffect(() => {
     if (textFocus && textFocus.current) {
       textFocus.current.focus()
     }
+    console.log(textFocus.current)
   }, [toggleHide])
 
-  const handleMessageUpdater = e => {
-    setMessage(e.target.value)
+  const handleHiding = () => {
+    setToggleHide(!toggleHide)
   }
 
   const handleMessageSubmitter = e => {
@@ -45,26 +42,12 @@ const CardList = ({ title, id, cardData, deleteListByID, updateListByID }) => {
       })
       setMessage("")
     }
+
     if (e.keyCode !== 13) {
       handleHiding()
     } else {
       setMessage("")
       textFocus.current.focus()
-    }
-    return
-  }
-
-  const handleTitle = e => {
-    if (e.keyCode === 13) {
-      document.activeElement.blur() // Removes focus from title
-      updateListByID(id, titleMessage) // TODO: Update List beyond just "pressing enter"
-    }
-  }
-
-  const handleContent = e => {
-    if (e.keyCode === 13) {
-      document.activeElement.blur()
-      handleMessageSubmitter(e)
     }
   }
 
@@ -78,7 +61,10 @@ const CardList = ({ title, id, cardData, deleteListByID, updateListByID }) => {
             spellCheck='false'
             value={titleMessage}
             onChange={e => setTitleMessage(e.target.value)}
-            onKeyDown={handleTitle}
+            onKeyDown={e => {
+              e.keyCode === 13 && document.activeElement.blur()
+            }}
+            onBlur={() => updateListByID(id, titleMessage)}
           />
           <button className='cancel-button' onClick={() => deleteListByID(id)}>
             x
@@ -86,7 +72,7 @@ const CardList = ({ title, id, cardData, deleteListByID, updateListByID }) => {
         </div>
         <div className='list-card list-scroll'>
           {cardData.map(cards => (
-            <Card key={cards.card_id} text={cards.content} /> //TODO: Generate Unique Key
+            <Card key={cards.card_id} id={cards.card_id} text={cards.content} />
           ))}
           <div className={toggleHide ? "hide" : "cc-input-container"}>
             <div className='card-list-input'>
@@ -95,9 +81,8 @@ const CardList = ({ title, id, cardData, deleteListByID, updateListByID }) => {
                 className='card-list-textarea'
                 dir='auto'
                 value={message}
-                onChange={e => handleMessageUpdater(e)}
-                onKeyDown={handleContent}
-                placeholder='Enter a title for this card…'
+                onChange={e => setMessage(e.target.value)}
+                placeholder='Add a new card…'
               ></textarea>
             </div>
             <div className='card-list-control'>
@@ -109,7 +94,11 @@ const CardList = ({ title, id, cardData, deleteListByID, updateListByID }) => {
                 onClick={e => handleMessageSubmitter(e)}
               />
               {/* eslint-disable-next-line */}
-              <a className='icon-close' href='#' onClick={handleHiding} />
+              <a
+                className='icon-close'
+                href='#'
+                onClick={() => handleHiding()}
+              />
             </div>
           </div>
         </div>
