@@ -6,11 +6,11 @@ const Types = {
 }
 
 const Card = ({ text, id }) => {
-  const [collectedProps, drag] = useDrag({
-    item: { type: Types.CARD, id }
-  })
+  // const [collectedProps, drag] = useDrag({
+  //   item: { type: Types.CARD, id }
+  // })
   return (
-    <div className='card-component f14 lh20' ref={drag}>
+    <div className='card-component f14 lh20'>
       <div className='card-title'>{text}</div>
     </div>
   )

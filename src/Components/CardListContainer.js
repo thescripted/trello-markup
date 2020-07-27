@@ -2,59 +2,27 @@ import React, { useState, useRef, useEffect } from "react"
 import CardList from "./CardList"
 import AddList from "./AddList"
 import { useQuery, useMutation } from "urql"
-
-// TODO: CREATE LOCAL STATE FOR ONCHANGE IN ADDLIST, AND HANDLE RE-RENDER IN THIS CONTAINER
-
-const GET_ALL_DATA = `
-  query {
-    getListsAndCardsData {
-      title
-      list_id
-      card {
-        content
-        createdat
-        card_id
-      }
-    }
-  }
-`
-
-const ADD_NEW_LIST = `
-mutation ($title: String!) {
-  addList (title: $title) {
-    list_id
-    title
-  }
-}
-`
-
-const DELETE_LIST = `
-mutation($list_id: Int!) {
-  deleteList(id: $list_id)
-}`
-
-const UPDATE_LIST = `
-mutation($list_id: Int!, $title: String!) {
-  updateList(id: $list_id, title: $title) {
-    list_id
-    title
-  }
-}
-`
+import {
+  GET_ALL_DATA,
+  ADD_NEW_LIST,
+  DELETE_LIST,
+  UPDATE_LIST
+} from "../Support/gql"
 
 const CardListContainer = () => {
   const [results, reexecuteQuery] = useQuery({
     query: GET_ALL_DATA,
     requestPolicy: "cache-and-network"
   })
+
   const [createListResults, createList] = useMutation(ADD_NEW_LIST)
   const [deleteListResults, deleteList] = useMutation(DELETE_LIST)
   const [updateListResults, updateList] = useMutation(UPDATE_LIST)
 
   const deleteListByID = list_id => {
-    deleteList({ list_id: parseInt(list_id) }).then(result => {
-      if (result.error) {
-        console.log("Oh, no!", result.error)
+    deleteList({ list_id: parseInt(list_id) }).then(results => {
+      if (results.error) {
+        console.log("Oh, no!", results.error)
       }
     })
     reexecuteQuery({
@@ -63,9 +31,9 @@ const CardListContainer = () => {
   }
 
   const updateListByID = (list_id, title) => {
-    updateList({ list_id: parseInt(list_id), title: title }).then(result => {
-      if (result.error) {
-        console.log("Oh, no!", result.error)
+    updateList({ list_id: parseInt(list_id), title: title }).then(results => {
+      if (results.error) {
+        console.log("Oh, no!", results.error)
       }
     })
     reexecuteQuery({
@@ -89,9 +57,9 @@ const CardListContainer = () => {
     // Generates a List Object to render onto the canvas
     createList({
       title: listMessage
-    }).then(result => {
-      if (result.error) {
-        console.log("Oh, no!", result.error)
+    }).then(results => {
+      if (results.error) {
+        console.log("Oh, no!", results.error)
       }
     })
     setListMessage("")

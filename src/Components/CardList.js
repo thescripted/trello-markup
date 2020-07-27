@@ -22,7 +22,6 @@ const CardList = ({ title, id, cardData, deleteListByID, updateListByID }) => {
     if (textFocus && textFocus.current) {
       textFocus.current.focus()
     }
-    console.log(textFocus.current)
   }, [toggleHide])
 
   const handleHiding = () => {
