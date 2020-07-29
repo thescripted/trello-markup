@@ -89,6 +89,7 @@ const CardListContainer = () => {
               cardData={listItem.card}
               updateListByID={updateListByID}
               deleteListByID={deleteListByID}
+              reexecuteQuery={reexecuteQuery}
             />
           ))}
         {hideListCreator ? (
